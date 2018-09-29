@@ -4,13 +4,19 @@ Miscellaneous scripts that I've written for my own convenience. Hopefully you fi
 Feel free to file an issue if a script is not working for you. Although I originally wrote these for myself, I would like them to be robust and reliable for other users too.
 
 ## Contents
-[Unix/System](#Unix/System Management)
-[General Files](#General File Management)
-[Image Files](#Image File Management)
-[Audio Files](#Audio File Management)
-[Development](#Development)
-[Web](#Web)
+[Unix/System](#unixsystem-management)
 
+[General Files](#general-file-management)
+
+[Image Files](#image-file-management)
+
+[Audio Files](#audio-file-management)
+
+[Development](#development)
+
+[Web](#web)
+
+---
 
 ## Unix/System Management
 ### Back Up Unix Settings
@@ -27,6 +33,7 @@ Save a plain-text copy of the man page for a given command.
 
 ### Update MacPorts
 A convenient interactive assistant for updating MacPorts and all installed ports.
+
 ---
 
 ## General File Management### Change File Suffixes
@@ -81,7 +88,8 @@ Given a folder of .emlx files, assigns each one a name based on the date and tim
 Given a parent folder X, renames each file of a given suffix in X to be "X-#", where '#' is the alphabetical ordinal position of the file.
 
 ### ZipSafe
-Creates Windows-friendly ZIPs that lack the Mac's invisible .DS_Store files, also omitting invisible Subversion and Git development directories.
+Creates Windows-friendly ZIPs that lack the Mac's invisible .DS_Store files, also omitting invisible Subversion and Git development directories.  Automator workflow version of this script found [here](../Automator).
+
 ---
 
 ## Image File Management
@@ -95,9 +103,11 @@ Creates a directory listing of all subfolders, and a gallery of all images in ea
 Crops a folder of images using a certain offset and size.
 
 ### Resize Images
-Resize all images of size X to size Y.---## Audio File Management
+Resize all images of size X to size Y.
+---## Audio File Management
 ### Total Sound Times
 Gives the cumulative total time of all AIFFs in a folder.
+
 ---
 
 ## Development
@@ -114,7 +124,8 @@ Count the source files in a project.
 Count the lines of code in a project.
 
 ### Print Certificate Info
-Tells you the developer certificate signing authority for each app in a folder.---## Web### HTTP Tests
+Tells you the developer certificate signing authority for each app in a folder.
+---## Web### HTTP Tests
 Print the response (status, header, redirect, or Internet Archive status) received upon querying a given URL.
 
 ### Print Chromium History
