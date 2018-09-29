@@ -2,10 +2,10 @@
 
 # Find Header Comments
 # Prints the header comments that developers typically place at the tops of
-# source files. Works in the current directory. Intended for use in C
-# family code. The heuristics below were hastily written for one-time use
-# and are somewhat inaccurate, but they tend to err on the side of false
-# positives rather than missing header comments.
+# source files. Works recursively starting from the current directory.
+# Intended for use in C family code. The heuristics below were hastily
+# written for one-time use and are somewhat inaccurate, but they tend to err
+# on the side of false positives rather than missing header comments.
 
 # Set the field separator to a newline to avoid spaces in paths breaking our
 # variable-setting
