@@ -36,7 +36,8 @@ A convenient interactive assistant for updating MacPorts and all installed ports
 
 ---
 
-## General File Management### Change File Suffixes
+## General File Management
+### Change File Suffixes
 Changes all files of suffix X to suffix Y.
 
 ### Collect Email Addresses
@@ -104,7 +105,10 @@ Crops a folder of images using a certain offset and size.
 
 ### Resize Images
 Resize all images of size X to size Y.
----## Audio File Management
+
+---
+
+## Audio File Management
 ### Total Sound Times
 Gives the cumulative total time of all AIFFs in a folder.
 
@@ -125,7 +129,11 @@ Count the lines of code in a project.
 
 ### Print Certificate Info
 Tells you the developer certificate signing authority for each app in a folder.
----## Web### HTTP Tests
+
+---
+
+## Web
+### HTTP Tests
 Print the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
 
 ### Print Chromium History
