@@ -23,7 +23,7 @@ Feel free to file an issue if a script is not working for you. Although I origin
 Backs up your shell settings in a single text file.
 
 ### History Check
-Helps you to avoid going over your Bash command history limit and losing old history.
+Helps you to avoid exceeding your Bash command history limit and losing old history.
 
 ### Last Boot Times
 Lists when each mounted volume was last booted from (whether macOS or Windows).
@@ -40,7 +40,7 @@ A convenient interactive assistant for updating MacPorts and all installed ports
 Changes all files of suffix X to suffix Y.
 
 ### Collect Email Addresses
-Saves all email addresses found in a folder of text files or Mail emails (.emlx).
+Saves all email addresses found in a folder's text files or Apple Mail emails (.emlx).
 
 ### Collect File Suffixes
 Prints out a list of all suffixes used by the files in a directory.
@@ -49,7 +49,7 @@ Prints out a list of all suffixes used by the files in a directory.
 Copies all files with a given suffix to a new directory.
 
 ### Delete Files by Content
-Moves files to Trash if they contain specified search terms.
+Moves files to Trash if they contain any of the specified search terms.
 
 ### Delete Files by Name
 Moves files to Trash if their names match the given pattern.
@@ -70,7 +70,7 @@ Look for items in a directory which are *not* listed in a given text file.
 Print out lines from a folder of files which contain the given search term.
 
 ### Find in Files and Copy
-Copy files to another folder if they contain specified search term.
+Copy files to another folder if they contain the specified search term.
 
 ### Find List in Files
 Search a directory for files containing any of the terms in a given text file.
@@ -112,7 +112,7 @@ Gives the cumulative total time of all AIFFs in a folder.
 
 ## Development
 ### Cloak Dev Paths
-Prevent your local disk's paths from showing up in a built Xcode application.
+Prevent your local disk's paths from showing up in an Xcode-built binary.
 
 ### Find Header Comments
 Extract and print comment blocks from the tops of all source files in a project.
@@ -126,7 +126,7 @@ Count the lines of code in a project.
 ### Print Certificate Info
 Tells you the developer certificate signing authority for each app in a folder.
 ---## Web### HTTP Tests
-Print the response (status, header, redirect, or Internet Archive status) received upon querying a given URL.
+Print the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
 
 ### Print Chromium History
 Tells you all the sites you visited in a Chromium-based browser on a given day.
