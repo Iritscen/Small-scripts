@@ -82,6 +82,9 @@ What it says on the tin.
 ### [Get EOL Type](get_eol_type.sh)
 Tells user which type(s) of line endings a given file uses.
 
+### [Get Info](get_info.sh)
+Simulates the Get Info window on the command line by listing the size and item count of a directory.
+
 ### [Rename Emails with Dates](rename_emails_with_dates.sh)
 Given a folder of .emlx files, assigns each one a name based on the date and time it was sent/received.
 
