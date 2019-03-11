@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Find List in Files
+# Find Terms in Files
 # Searches a directory of files for each term from a list,
 # and outputs the lines with those terms to a file. It is
 # assumed that each search term in the source list is on a

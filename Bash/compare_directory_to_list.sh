@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Find File Name in File
+# Compare Directory to List
 # Looks in the directory specified in parameter 1 for the file names
 # listed in the text file specified in parameter 2. If the file name
 # is not found, the file is declared "unique". File suffixes are

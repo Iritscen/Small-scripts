@@ -29,7 +29,7 @@ Helps you to avoid exceeding your Bash command history limit and losing old hist
 Lists when each mounted volume was last booted from (whether macOS or Windows).
 
 ### [Man Dump](man_dump.sh)
-Save a plain-text copy of the man page for a given command.
+Saves a readable plain-text copy of the man page for a given command.
 
 ### [Update MacPorts](update_macports.sh)
 A convenient interactive assistant for updating MacPorts and all installed ports.
@@ -49,32 +49,32 @@ Prints out a list of all suffixes used by the files in a directory.
 ### [Collect Files by Type](collect_files_by_type.sh)
 Copies all files with a given suffix to a new directory.
 
-### [Delete Files by Content](delete_files_by_content.sh)
-Moves files to Trash if they contain any of the specified search terms.
+### [Compare Directory to List](compare_directory_to_list.sh)
+Looks for items in a directory whose names are *not* listed in a given text file.
 
 ### [Delete Files by Name](delete_files_by_name.sh)
 Moves files to Trash if their names match the given pattern.
 
 ### [Duplicate and Name](duplicate_and_name.sh)
-Given file X and set of files Y in a given directory, copy X once for every file in Y and apply the names in Y to those copies.
+Given file X and set of files Y in a given directory, makes one copy of X named for each file in Y.
 
 ### [Find Case Conflicts](find_case_conflicts.sh)
-Print out directory items which would have a name conflict if they weren't stored in a case-sensitive file system.
+Prints out directory items which would have a name conflict in a case-insensitive file system.
 
 ### [Find File A in File B](find_file_a_in_file_b.sh)
-Print out matching lines between file A and B.
-
-### [Find File Name in File](find_file_name_in_file.sh)
-Look for items in a directory which are *not* listed in a given text file.
+Prints out matching lines between file A and file B.
 
 ### [Find in Files](find_in_files.sh)
-Print out lines from a folder of files which contain the given search term.
+Prints out lines from a folder of files which contain the given search term.
 
 ### [Find in Files and Copy](find_in_files_and_copy.sh)
-Copy files to another folder if they contain the specified search term.
+Copies files to a folder if they contain the given search term.
 
-### [Find List in Files](find_list_in_files.sh)
-Search a directory for files containing any of the terms in a given text file.
+### [Find in Files and Delete](find_in_files_and_delete.sh)
+Moves files to Trash if they contain any of the specified search terms.
+
+### [Find Terms in Files](find_terms_in_files.sh)
+Searches a directory for files containing any of the terms in a given text file.
 
 ### [Find Zero-Byte Files](find_zero_byte_files.sh)
 What it says on the tin.
@@ -101,13 +101,13 @@ Creates Windows-friendly ZIPs that lack the Mac's invisible .DS_Store files, als
 Converts all images of a given suffix to another format.
 
 ### [Create HTML Gallery](create_html_gallery.sh)
-Creates a directory listing of all subfolders, and a gallery of all images in each subfolder.
+Creates an HTML directory listing of all subfolders, and an HTML gallery of all images in each subfolder.
 
 ### [Crop Images](crop_images.sh)
 Crops a folder of images using a certain offset and size.
 
 ### [Resize Images](resize_images.sh)
-Resize all images of size X to size Y.
+Resizes all images of size X to size Y.
 
 ---
 
@@ -119,16 +119,16 @@ Gives the cumulative total time of all AIFFs in a folder.
 
 ## Development
 ### [Cloak Dev Paths](cloak_dev_paths.sh)
-Prevent your local disk's paths from showing up in an Xcode-built binary.
+Prevents your local disk's paths from showing up in an Xcode-built binary.
 
 ### [Find Header Comments](find_header_comments.sh)
-Extract and print comment blocks from the tops of all source files in a project.
+Isolates and prints the comment block from the top of each source file in a project.
 
 ### [Get Source Count](get_source_count.sh)
-Count the source files in a project.
+Counts the source files in a project.
 
 ### [Get Source Length](get_source_length.sh)
-Count the lines of code in a project.
+Counts the lines of code in a project.
 
 ### [Print Certificate Info](print_cert_info.sh)
 Tells you the developer certificate signing authority for each app in a folder.
@@ -137,7 +137,7 @@ Tells you the developer certificate signing authority for each app in a folder.
 
 ## Web
 ### [HTTP Tests](http_tests.sh)
-Print the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
+Prints the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
 
 ### [Print Chromium History](print_chromium_history.sh)
 Tells you all the sites you visited in a Chromium-based browser on a given day.
