@@ -1,28 +1,37 @@
 #!/bin/bash
 
 # Change File Suffixes
-# A mass suffix-changing tool, for when the Finder's File>Rename option is too slow
-# (it currently asks you to confirm a notable change to a suffix for each file).
-# Parameter 1 is the file suffix to look for, and parameter 2 is the new suffix to
-# replace it with.
-
-OLD_SUFFIX=$1
-NEW_SUFFIX=$2
-FOUND=0
+# A mass suffix-changing tool which can accept regex patterns, allowing
+# multiple suffixes to be matched and set to a new suffix.
+# Parameter 1 is the directory to search, parameter 2 is the file suffix or
+# suffix pattern to look for, and parameter 3 is the new suffix to replace
+# it with.
 
 # Set the field separator to a newline to avoid spaces in paths breaking our
 # variable-setting
 IFS="
 "
 
-for FN in `find . | grep $OLD_SUFFIX `
+TARGET_DIR="$1"
+TARGET_SUFFIX="$2"
+NEW_SUFFIX="$3"
+RENAMED=0
+FILES="files"
+
+cd "$TARGET_DIR"
+
+for FN in `find .`
 do
-   mv $FN ${FN%$OLD_SUFFIX}$NEW_SUFFIX
-   let FOUND+=1
+   if [[ $FN == $TARGET_SUFFIX ]]; then
+      FN_BASE=${FN%.*}
+      echo "Renaming $FN to '$FN_BASE$NEW_SUFFIX'..."
+      mv $FN $FN_BASE$NEW_SUFFIX
+      let RENAMED+=1
+   fi
 done
 
-if [ $FOUND -eq 1 ]; then
+if [ $RENAMED -eq 1 ]; then
    FILES="file"
 fi
 
-echo "Renamed $FOUND files."
+echo "Renamed $RENAMED $FILES."
