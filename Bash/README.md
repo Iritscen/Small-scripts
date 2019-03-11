@@ -28,6 +28,9 @@ Helps you to avoid exceeding your Bash command history limit and losing old hist
 ### [Last Boot Times](last_boot_times.sh)
 Lists when each mounted volume was last booted from (whether macOS or Windows).
 
+### [List Startup Items](list_startup_items.sh)
+Lists all the files registered on a macOS system as launch daemons, launch agents, and general startup items.
+
 ### [Man Dump](man_dump.sh)
 Saves a readable plain-text copy of the man page for a given command.
 
