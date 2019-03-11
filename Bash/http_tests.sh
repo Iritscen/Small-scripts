@@ -3,10 +3,11 @@
 # HTTP Tests
 # Prints a specified type of response to an HTTP query on a specified URL.
 # Parameter 1: Desired type of response to obtain. Allowed types are:
-#    "code": HTTP response code (status)
+#    "response": HTTP response code (status)
 #    "header": HTTP header
 #    "redirect": Redirect URL returned for this URL
 #    "archive": Internet Archive response code (whether this page is archived)
+#    "source": Full page source
 # Parameter 2: The URL to test.
 # Recommended width:
 # |----------------------------------------------------------------------------------------------------------------------------------------|
@@ -15,19 +16,20 @@ IFS="
 "
 
 if [ "$#" -ne 2 ]; then
-   echo "You need to supply two parameters: a mode argument (\"code\", \"header\", \"redirect\", or \"archive\") and then a URL to test."
+   echo "You need to supply two parameters: a mode argument (\"response\", \"header\", \"redirect\", \"archive\", or \"source\") and then a URL to test."
    exit 1
 fi
 
 MODE=0
-CURL_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:53.0) Gecko/20100101 Firefox/53.0"
+CURL_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36 OPR/58.0.3135.79"
 CURL_URL=$2
 
 case "$1" in
-   code )     MODE=1; shift;;
+   response ) MODE=1; shift;;
    header )   MODE=2; shift;;
    redirect ) MODE=3; shift;;
    archive )  MODE=4; shift;;
+   source )   MODE=5; shift;;
    * )        echo "Invalid mode argument '$1' detected. Aborting."; exit 2;;
 esac
 
@@ -40,4 +42,6 @@ elif [ $MODE -eq 3 ]; then
 elif [ $MODE -eq 4 ]; then
    curl --silent --max-time 10 "http://archive.org/wayback/available?url=$CURL_URL&statuscodes=200&statuscodes=203&statuscodes=206"
    echo
+elif [ $MODE -eq 5 ]; then
+   curl --silent --insecure --user-agent '$CURL_AGENT' $CURL_URL
 fi
