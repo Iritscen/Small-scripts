@@ -9,15 +9,15 @@
 GALLERY_PAGE="$1"
 OUTPUT_DIR="$2"
 
-AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39"
+AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36 OPR/58.0.3135.79"
 
 # Safety check
 if [ ! "$#" -eq 2 ]; then
-   echo "You must pass this script two arguments, the URL of the gallery and the local path to save its images to."
+   echo "You must pass this script two arguments: (1) the URL of the gallery and (2) the local path to save its images to."
    exit
 fi
 
-# Get ID for RSS feed from page's HTML
+# Get ID for RSS feed from page's HTML, if RSS is enabled
 RSS_ID=$(curl --silent --insecure --user-agent '"$AGENT"' "$GALLERY_PAGE" | grep --max-count=1 -o "&Data=[_0-9A-Za-z]*")
 RSS_ID=${RSS_ID#&Data=}
 
