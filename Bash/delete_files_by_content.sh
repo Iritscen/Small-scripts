@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Find in Files and Delete
+# Delete Files by Content
 # A program that moves files to the Trash based on their content.
 # Recommended width:
 # |---------------------------------------------------------------------------------------------|
