@@ -52,8 +52,8 @@ Prints out a list of all suffixes used by the files in a directory.
 ### [Collect Files by Type](collect_files_by_type.sh)
 Copies all files with a given suffix to a new directory.
 
-### [Compare Directory to List](compare_directory_to_list.sh)
-Looks for items in a directory whose names are *not* listed in a given text file.
+### [Delete Files by Content](delete_files_by_content.sh)
+Moves files to Trash if they contain any of the specified search terms.
 
 ### [Delete Files by Name](delete_files_by_name.sh)
 Moves files to Trash if their names match the given pattern.
@@ -67,16 +67,16 @@ Prints out directory items which would have a name conflict in a case-insensitiv
 ### [Find File A in File B](find_file_a_in_file_b.sh)
 Prints out matching lines between file A and file B.
 
+### [Find File Name in File](find_file_name_in_file.sh)
+Looks for items in a directory whose names are *not* listed in a given text file.
+
 ### [Find in Files](find_in_files.sh)
 Prints out lines from a folder of files which contain the given search term.
 
 ### [Find in Files and Copy](find_in_files_and_copy.sh)
 Copies files to a folder if they contain the given search term.
 
-### [Find in Files and Delete](find_in_files_and_delete.sh)
-Moves files to Trash if they contain any of the specified search terms.
-
-### [Find Terms in Files](find_terms_in_files.sh)
+### [Find List in Files](find_list_in_files.sh)
 Searches a directory for files containing any of the terms in a given text file.
 
 ### [Find Zero-Byte Files](find_zero_byte_files.sh)
@@ -108,6 +108,9 @@ Creates an HTML directory listing of all subfolders, and an HTML gallery of all 
 
 ### [Crop Images](crop_images.sh)
 Crops a folder of images using a certain offset and size.
+
+### [Find Images by Size](find_images_by_size.sh)
+Prints out names of files that meet a minimum specified width/height and optional portrait/landscape orientation.
 
 ### [Resize Images](resize_images.sh)
 Resizes all images of size X to size Y.
