@@ -19,7 +19,7 @@ Feel free to file an issue if a script is not working for you. Although I origin
 ---
 
 ## Unix/System Management
-### [Back Up Unix Settings](back_up_unix_settings.sh)<!-- 
+### [Back Up Unix Settings](back_up_unix_settings.sh)<!--
 (none)-->
 Backs up your shell settings in a single text file.
 
