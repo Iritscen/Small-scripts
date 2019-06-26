@@ -46,7 +46,7 @@ COUNT_LIST="$TEMP_DIR/gi_countlist.txt"
 PRINT_BIN_SIZES=1
 
 # Save full recursive contents of this dir.
-find "$1" -ls > "$DIR_LIST"
+sudo find "$1" -ls > "$DIR_LIST"
 
 # Filter out directories and save list of only files (for calculating size)
 egrep -v "^[[:space:]]*([^[:space:]]+[[:space:]]+){2}d" "$DIR_LIST" > "$SIZE_LIST"
