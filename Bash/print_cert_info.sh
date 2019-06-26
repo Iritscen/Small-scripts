@@ -8,12 +8,12 @@
 
 if [ $# -ne 1 ]; then
   echo "You must supply a directory as an argument to this script."
-  return 1
+  exit 1
 fi
 
 if [ ! -d "$1" ]; then
   echo "Directory not found."
-  return 1
+  exit 1
 fi
 
 # Set the field separator to a newline to avoid spaces in paths breaking
