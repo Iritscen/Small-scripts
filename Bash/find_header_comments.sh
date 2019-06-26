@@ -2,7 +2,7 @@
 
 # Find Header Comments
 # Prints the header comments that developers typically place at the tops of
-# source files. Works recursively starting from the current directory.
+# source files. Works recursively starting from the given directory.
 # Intended for use in C family code. The heuristics below were hastily
 # written for one-time use and are somewhat inaccurate, but they tend to err
 # on the side of false positives rather than missing header comments.
@@ -12,7 +12,7 @@
 IFS="
 "
 
-# Iterate recursively through current directory's .c, .m, and .h source files
+# Iterate recursively through given directory's .c, .m, and .h source files
 for FN in `find "$1" | grep "\.[cmh]$"`
 do
    # Make sure file is not empty or nearly empty
