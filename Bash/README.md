@@ -20,7 +20,7 @@ Feel free to file an issue if a script is not working for you. Although I origin
 
 ## Unix/System Management
 ### [Back Up Unix Settings](back_up_unix_settings.sh)
-<!--(none)-->
+<!--Destination path and name of backup file.-->
 Backs up your shell settings in a single text file.
 
 ### [History Check](history_check.sh)
@@ -54,28 +54,13 @@ Changes all files of suffix X to suffix Y.
 
 ### [Collect Email Addresses](collect_email_addresses.sh)
 <!--The directory containing the text files to search.
-The directory in which to save the text file full of addresses.-->
+The directory in which to save the text file full of addresses.
+(optional) The argument 'email-from' triggers an alternate mode that searches .emlx files instead of .txt files and only saves the sender address from each email.-->
 Saves all email addresses found in a folder's text files or Apple Mail emails (.emlx).
 
 ### [Collect File Suffixes](collect_file_suffixes.sh)
 <!--The directory to recursively collect suffixes from.-->
 Prints out a list of all suffixes used by the files in a directory.
-
-### [Collect Files by Type](collect_files_by_type.sh)
-<!--The file type to collect (run script with no params to see your choices).
-The directory to search recursively.
-The folder in which to place copies of the selected files.
-The copy mode ('f' for flat-copy, 'm' for mirror-copy).-->
-Copies all files with a given suffix to a new directory.
-
-### [Delete Files by Content](delete_files_by_content.sh)
-<!--The directory in which to recursively search files. (Search terms are hardcoded.)-->
-Moves files to Trash if they contain any of the specified search terms.
-
-### [Delete Files by Name](delete_files_by_name.sh)
-<!--The directory in which to recursively search for file names.
-The regex pattern of file names to search for.-->
-Moves files to Trash if their names match the given pattern.
 
 ### [Duplicate and Name](duplicate_and_name.sh)
 <!--The path to the file to copy 'n' times.
@@ -97,31 +82,45 @@ Prints out matching lines between file A and file B.
 The text file with file names to search for.-->
 Looks for items in a directory whose names are *not* listed in a given text file.
 
-### [Find in Files](find_in_files.sh)
-<!--The directory which should be recursively searched.
-The regex pattern of file names to search for.
-The regex pattern to look for in these files.
-(optional) The amount of lines before the matching content that should be shown (default = 0).-->
-Prints out lines from a folder of files which contain the given search term.
-
-### [Find in Files and Copy](find_in_files_and_copy.sh)
-<!--The directory which should be recursively searched. (Search terms and suffixes of files to search in are hardcoded.)
-The directory to copy matching files into.-->
-Copies files to a folder if they contain the given search term.
-
 ### [Find List in Files](find_list_in_files.sh)
 <!--The directory in which to recursively search files.
 The regex pattern of file names to search.
 The text file with the terms to search for in these files.-->
 Searches a directory for files containing any of the terms in a given text file.
 
+### [Find List in Files and Delete](find_list_in_files_and_delete.sh)
+<!--The directory in which to recursively search files.
+The regex pattern of file names to search.
+The text file with the terms to search for in these files.-->
+Searches a directory for files containing any of the terms in a given text file, and moves matching files to the Trash.
+
 ### [Find Zero-Byte Files](find_zero_byte_files.sh)
 <!--(none)-->
-What it says on the tin.
+Lists all files in the current directory that are zero bytes in size.
+
+### [Get Data Totals](get_data_totals.sh)
+<!--'--file' followed by the path to the input file that the script should operate upon, OR
+'--dir' followed by the directory to get the size of.-->
+Takes an input file of a specified format (see script's comments) containing a list of directories to get the sizes of, grouped by category and volume, and displays the results.
 
 ### [Get EOL Type](get_eol_type.sh)
 <!--The file to examine.-->
-Tells user which type(s) of line endings a given file uses.
+Tells user which type(s) of line endings a given file uses. Requires 'dos2unix' to be installed.
+
+### [Get Finder Sizes](get_finder_sizes.sh)
+<!--The directory to get the size of.-->
+An 'osascript' wrapper that allows you to ask Finder from the command line what is the size of a folder. Both logical and physical sizes will be printed.
+
+### [Get Fork Sizes](get_fork_sizes.sh)
+<!--Path to directory to get the fork sizes for.
+(optional) '--list-files' will cause each file's fork sizes to be printed to screen.-->
+Searching recursively in the supplied directory, checks each file for a resource fork, and totals the sizes of the data and resource forks separately. After printing the fork sizes to screen, the script also predicts what Finder will claim is the size of the folder, accounting for a bug as of macOS 10.14 pertaining to multi-fork files under APFS.
+
+### [Get Hardlink Sizes](get_hardlink_sizes.sh)
+<!--(After "--vol" or "--dir") The directory or volume to recursively search for multi-linked files.
+(optional) "--list-files" will list all found files instead of just giving the totals.
+(optional) "--bigger-than nUNITS" will only show files larger than 'n' "UNITS" of size.-->
+Finds all hardlinked (multi-linked) files on a volume or in a specified directory and prints out how much space the files take up and how much space is saved through the use of hardlinks.
 
 ### [Get Info](get_info.sh)
 <!--The directory to get info on.-->
@@ -129,13 +128,22 @@ Simulates the Get Info window on the command line by listing the size and item c
 
 ### [Rename Emails with Dates](rename_emails_with_dates.sh)
 <!--The directory of emails.
-The directory to which to copy the emails.-->
+The directory to which to copy the emails.
+(optional) '--dry-run' will tell you what will be copied without actually copying anything.
+(optional) '--stop-on-fail' will stop the script if an email's date cannot be read.-->
 Given a folder of .emlx files, assigns each one a name based on the date and time it was sent/received.
 
 ### [Rename Sequentially](rename_sequentially.sh)
 <!--The directory with the files to rename.
 The suffix of the files to rename.-->
 Given a parent folder X, renames each file of a given suffix in X to be "X-#", where '#' is the alphabetical ordinal position of the file.
+
+### [Run on Files by Size](run_on_files_by_size.sh)
+<!--The script that will be run.
+The directory of files to appraise.
+The minimum size in bytes of files to pass to the script.
+The maximum size in bytes of files to pass to the script.-->
+Looking at the files in a given directory, pass each one to the specified script if the file is within a certain size range.
 
 ### [ZipSafe](zip_safe.sh)
 <!--The directory to compress (ZIP is placed next to directory).-->
@@ -146,11 +154,11 @@ Creates Windows-friendly ZIPs that lack the Mac's invisible .DS_Store files, als
 ## Image File Management
 ### [Convert Images](convert_images.sh)
 <!--(none)-->
-Converts all images of a given suffix to another format.
+Converts all images of a given suffix to another format. Requires ImageMagick.
 
 ### [Create HTML Gallery](create_html_gallery.sh)
 <!--The top directory of the folders full of images.-->
-Creates an HTML directory listing of all subfolders, and an HTML gallery of all images in each subfolder.
+Creates an HTML directory listing of all subfolders, and an HTML gallery of all images in each subfolder. Requires ImageMagick.
 
 ### [Crop Images](crop_images.sh)
 <!--The directory of images to create cropped copies of.
@@ -158,7 +166,7 @@ The width to crop them to.
 The height to crop them to.
 The left inset.
 The top inset.-->
-Crops a folder of images using a certain offset and size.
+Crops a folder of images using a certain offset and size. Requires ImageMagick.
 
 ### [Find Images by Size](find_images_by_size.sh)
 <!--The directory to search recursively for images.
@@ -166,18 +174,18 @@ The minimum desired width of results.
 The word 'and' or 'or' (whether only the min. width or min. height needs to be met, or both).
 The minimum desired height of results.
 (optional) The word 'port' or 'land' for only portrait or only landscape results.-->
-Prints out names of files that meet a minimum specified width/height and optional portrait/landscape orientation.
+Prints out names of files that meet a minimum specified width/height and optional portrait/landscape orientation. Requires ImageMagick.
 
 ### [Resize Images](resize_images.sh)
 <!--The directory in which to resize images. (Rest of parameters are hardcoded.)-->
-Resizes all images of size X to size Y.
+Resizes all images of size X to size Y. Requires ImageMagick.
 
 ---
 
 ## Audio File Management
 ### [Total Sound Times](total_sound_times.sh)
 <!--The directory of sound files to examine.-->
-Gives the cumulative total time of all AIFFs in a folder.
+Gives the cumulative total time of all AIFFs in a folder. Requires 'ffmpeg' to be installed.
 
 ---
 
@@ -192,11 +200,11 @@ Isolates and prints the comment block from the top of each source file in a proj
 
 ### [Get Source Count](get_source_count.sh)
 <!--(none)-->
-Counts the source files in a project.
+Recursively searches for and counts the source files in the current directory.
 
 ### [Get Source Length](get_source_length.sh)
 <!--(none)-->
-Counts the lines of code in a project.
+Recursively searches for source files in the current directory and counts their lines of code.
 
 ### [Print Certificate Info](print_cert_info.sh)
 <!--The directory in which to recursively search for applications.-->
@@ -211,11 +219,9 @@ The URL to test.-->
 Prints the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
 
 ### [Print Chromium History](print_chromium_history.sh)
-<!--The path to the browser's history file (db must be unlocked).
-The year of the desired history.
-The month of the desired history.
-The day of the desired history.
-The time zone offset.-->
+<!--The name of the browser or the path to the browser's history file.
+The date of the desired history in the format 'yyyy-m-d'.
+(optional) The time zone offset.-->
 Tells you all the sites you visited in a Chromium-based browser on a given day.
 
 ### [Scrape Smugmug Images](scrape_smugmug_images.sh)
