@@ -4,26 +4,26 @@
 # Saves the contents of your shell settings files into a text file, created
 # at the path you set below.
 
-HAVEWRITTENFIRSTFILE=0
-UNIXSETTINGSBACKUP="/your/path/to/Unix settings backup.txt"
-WRITESEPARATOR1="echo \"----\" >> \"$UNIXSETTINGSBACKUP\""
-WRITESEPARATOR2="echo -e \"\n----\n----\" >> \"$UNIXSETTINGSBACKUP\""
+WROTE_FIRST_FILE=0
+BACKUP_DEST="$1"
+WRITE_SEP1="echo \"----\" >> \"$BACKUP_DEST\""
+WRITE_SEP2="echo -e \"\n----\n----\" >> \"$BACKUP_DEST\""
 
 function backupSettingsFile()
 {
-  if [ $HAVEWRITTENFIRSTFILE -eq 0 ]; then
-    echo "$1:" > "$UNIXSETTINGSBACKUP"
-    HAVEWRITTENFIRSTFILE=1
+  if [ $WROTE_FIRST_FILE -eq 0 ]; then
+    echo "$1:" > "$BACKUP_DEST"
+    WROTE_FIRST_FILE=1
   else
-    echo "$1:" >> "$UNIXSETTINGSBACKUP"
+    echo "$1:" >> "$BACKUP_DEST"
   fi
 
-  eval $WRITESEPARATOR1
-  cat "$1" >> "$UNIXSETTINGSBACKUP"
-  eval $WRITESEPARATOR2
+  eval $WRITE_SEP1
+  cat "$1" >> "$BACKUP_DEST"
+  eval $WRITE_SEP2
 }
 
 backupSettingsFile "/etc/profile"
 backupSettingsFile "/etc/bashrc"
-backupSettingsFile "/Users/you/.inputrc"
-backupSettingsFile "/Users/you/.bash_profile"
+backupSettingsFile "$HOME/.inputrc"
+backupSettingsFile "$HOME/.bash_profile"
