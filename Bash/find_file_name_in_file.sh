@@ -21,7 +21,7 @@ for each_file in `ls "$search_dir"`; do
    if [ -z "$result" ]; then
       echo "${each_file%.*} is unique."
    fi
-   if [ $(($progress % 707)) == 0 ]; then
-      echo "$(($progress / $total_files))% done."
+   if [ $((progress % 707)) == 0 ]; then
+      echo "$((progress / total_files))% done."
    fi
 done

@@ -13,11 +13,10 @@ SEARCHED=0
 IFS="
 "
 
-for LINE in `cat "$FILE_A"`
-do
+for LINE in `cat "$FILE_A"`; do
    grep "$LINE" "$FILE_B"
    let SEARCHED+=1
-   if [ $(($SEARCHED % 10)) == 0 ]; then
+   if [ $((SEARCHED % 10)) == 0 ]; then
       echo "$SEARCHED lines done."
    fi
 done

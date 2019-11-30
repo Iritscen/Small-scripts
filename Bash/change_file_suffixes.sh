@@ -20,8 +20,7 @@ FILES="files"
 
 cd "$TARGET_DIR"
 
-for FN in `find .`
-do
+for FN in `find .`; do
    if [[ $FN == $TARGET_SUFFIX ]]; then
       FN_BASE=${FN%.*}
       echo "Renaming $FN to '$FN_BASE$NEW_SUFFIX'..."

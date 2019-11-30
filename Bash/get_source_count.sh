@@ -5,8 +5,7 @@
 # below) in the current directory (recursive).
 
 COUNT=0
-for FN in `find . | grep "\.[cm]$"`
-do
+for FN in `find . | grep "\.[cm]$"`; do
    COUNT=`echo 1+$COUNT | bc`
 done
 echo $COUNT

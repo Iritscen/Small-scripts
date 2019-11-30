@@ -11,8 +11,7 @@ IFS="
 MACFILE=private/var/log/system.log
 WINFILE=Windows/bootstat.dat
 
-for DISK in `ls -A /Volumes`
-do
+for DISK in `ls -A /Volumes`; do
    echo "Considering $DISK..."
    if [ -f "/Volumes/$DISK/$MACFILE" ]; then
       BOOTFILE=$MACFILE
@@ -26,8 +25,7 @@ do
    IFS=" "
    WORD_CTR=0
    echo -n "Last booted: "
-   for WORD in `ls -lT "/Volumes/$DISK/$BOOTFILE"`
-   do
+   for WORD in `ls -lT "/Volumes/$DISK/$BOOTFILE"`; do
       let WORD_CTR+=1
       if [ $WORD_CTR -eq 6 ] || [ $WORD_CTR -eq 7 ]; then
          echo -n "$WORD "

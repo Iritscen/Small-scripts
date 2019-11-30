@@ -26,8 +26,7 @@ TEMP_INFO=~/Downloads/cert_info.txt
 
 # Find all items that have ".app" at the end of their path but not
 # ".app/" in the midst of their path (i.e., not .apps within .apps)
-for next_item in `find "$1" | grep "\.app$" | egrep -v "\.app/"`
-do
+for next_item in `find "$1" | grep "\.app$" | egrep -v "\.app/"`; do
   echo "$next_item:"
 
   # Save stdout and stderr to file descriptors 3 and 4, then redirect

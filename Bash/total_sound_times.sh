@@ -11,8 +11,7 @@ TOTAL_TIME=
 COUNT=
 
 echo "Totaling the time of this folder's AIFFs..."
-for AIF in `find $IN_DIR | grep .aif$ `
-do
+for AIF in `find $IN_DIR | grep .aif$ `; do
    FILENAME=$(basename "$AIF")
 
    # Ask ffprobe to print to variable just the duration of the file

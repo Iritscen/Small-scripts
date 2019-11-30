@@ -13,8 +13,7 @@ IFS="
 "
 
 # Iterate recursively through given directory's .c, .m, and .h source files
-for FN in `find "$1" | grep "\.[cmh]$"`
-do
+for FN in `find "$1" | grep "\.[cmh]$"`; do
    # Make sure file is not empty or nearly empty
    FILE_SIZE=`cat $FN | wc -l`
    if [ $FILE_SIZE -lt 2 ]; then

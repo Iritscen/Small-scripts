@@ -82,8 +82,7 @@ if [ $TOTAL_SECTORS -gt 0 ]; then
    SIZE_BIN_FLT=$SIZE_BIN_INT
 
    scale=0;
-   while [ $SIZE_DEC_INT -gt 1000 ]
-   do
+   while [ $SIZE_DEC_INT -gt 1000 ]; do
       SIZE_DEC_FLT=$(echo | awk -v size_dec=$SIZE_DEC_FLT '{print size_dec/=1000}')
       SIZE_DEC_INT=$(echo | awk -v size_dec=$SIZE_DEC_FLT '{print int(size_dec)}')
       let scale+=1
@@ -104,8 +103,7 @@ if [ $TOTAL_SECTORS -gt 0 ]; then
 
    if [ $PRINT_BIN_SIZES == 1 ]; then
    scale=0;
-   while [ $SIZE_BIN_INT -gt 1024 ]
-   do
+   while [ $SIZE_BIN_INT -gt 1024 ]; do
       SIZE_BIN_FLT=$(echo | awk -v size_bin=$SIZE_BIN_FLT '{print size_bin/=1024}')
       SIZE_BIN_INT=$(echo | awk -v size_bin=$SIZE_BIN_FLT '{print int(size_bin)}')
       let scale+=1

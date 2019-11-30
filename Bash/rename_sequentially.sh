@@ -15,8 +15,7 @@ FOUND=0
 IFS="
 "
 
-for FN in `ls -d "$PARENT_DIR"/* | grep "\.${TARGET_SUFFIX}$"`
-do
+for FN in `ls -d "$PARENT_DIR"/* | grep "\.${TARGET_SUFFIX}$"`; do
    let FOUND+=1
    DIR_NAME=$(basename $PARENT_DIR)
    NEW_FN=$PARENT_DIR/$DIR_NAME-$FOUND.$TARGET_SUFFIX
