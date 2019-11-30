@@ -1,31 +1,52 @@
 #!/bin/bash
 
 # Print Chromium History
-# Prints out the URLs visited on a given day by reading the history database of a Chromium-based browser.
+# Prints out the URLs visited and the files downloaded on a given day by reading the history database of a
+# Chromium-based browser using 'sqlite3'.
 # Parameters:
-# 1: The path to the browser's history file. In Opera for Mac, this is ~/Library/Application Support/
-#    com.operasoftware.Opera/History.
-# 2: The year for the history lookup.
-# 3: The month for the history lookup.
-# 4: The day for the history lookup.
-# 5. The time zone offset. Chromium's timestamps are shifted by your offset from UTC, so you should plug in
-#    the reverse of your offset, e.g. if you are in ET (UTC-05:00), supply "5" as the offset.
+# 1. The name of the browser or the path to the browser's history file.
+# 2. The date for the history lookup.
+# 3. (optional) The time zone offset.
 # Known bugs: Sometimes a time offset is necessary to get the correct 24-hour period, and sometimes it isn't.
 # Recommended rule:
 # |---------------------------------------------------------------------------------------------------------|
 
+# Parse date parameter and then set IFS to newline avoid breaking file paths
+IFS="-"
+declare -a DATE_PARTS=($2)
 IFS="
 "
 
-HISTORY_PATH="$1"
-HUMAN_YEAR=$2
-HUMAN_MONTH=$3
-HUMAN_DAY=$4
-TZ_OFFSET=$5
+# Known paths of browser history files (only Opera supported at the moment; add your own!)
+declare -a BROWSER_NAMES=(Opera SampleBrowser)
+declare -a BROWSER_HIST_PATHS=("$HOME/Library/Application Support/com.operasoftware.Opera/History" "/path/to/history file")
 
-##SAFETY CHECKS##
-if [ ! -f "$1" ]; then
-   echo "History file not found at path $1. Exiting."
+HIST_PATH="$1"
+HUMAN_YEAR=$(echo ${DATE_PARTS[0]} | sed 's/^0*//')
+HUMAN_MONTH=$(echo ${DATE_PARTS[1]} | sed 's/^0*//')
+HUMAN_DAY=$(echo ${DATE_PARTS[2]} | sed 's/^0*//')
+TZ_OFFSET="$3"
+
+##ARGUMENT PROCESSING##
+if [ $# -ne 2 ] && [ $# -ne 3 ]; then
+   echo "You need to supply the following arguments:"
+   echo "1. 'Opera', which will automatically look up the browser's history file, OR"
+   echo "   'PATH', the path to a history file for such a browser."
+   echo "2. A date in the format 'yyyy-m-d'."
+   echo "3. (optional) An offset adjustment in hours for your time zone. Chromium's timestamps are in UTC, so to get the actual history for your chosen day's 24-hour period, you may need to plug in the reverse of your TZ offset. For example, if you are in the ET time zone (UTC-05:00), supply "5" as the offset." | fmt -w 80
+fi
+
+# Check arg 1 against known browsers
+a=0
+while [ "x${BROWSER_NAMES[$a]}" != "x" ]; do
+   if [ "${BROWSER_NAMES[$a]}" == "$1" ]; then
+      HIST_PATH=${BROWSER_HIST_PATHS[$a]}
+   fi
+   let a+=1
+done
+
+if [ ! -f "$HIST_PATH" ]; then
+   echo "History file not found at path $HIST_PATH. Exiting."
    exit
 fi
 
@@ -52,7 +73,7 @@ fi
 # Converts a raw date, as stored on disk by Chromium-based browsers, to a human-readable one. The input to
 # this function should be a number 17 digits long, and around 13 quadrillion, e.g. 13180923665109490 for
 # a time on Sep. 8, 2018 AD
-function chrome_time_to_human_time()
+function convertChromiumTimeToHumanTime()
 {
    SEARCH_DATE=$1
 
@@ -97,7 +118,7 @@ function getDaysBeforeYearX()
    curYear=$1
    while [ $curYear -gt $CHROME_EPOCH_YEAR ]; do
       let sumDays+=365
-      let sumDays+=$(isLeapYear $(($curYear-1)))
+      let sumDays+=$(isLeapYear $((curYear - 1)))
       let curYear-=1
    done
    echo $sumDays
@@ -115,7 +136,7 @@ function getDaysBeforeMonthXInYearY()
    # As long as we are looking back no further than Jan., look up the days
    # in the month before this one
    while [ $curMonth -gt 1 ]; do
-      let sumDays+=MONTH_DAYS[$(($curMonth-2))]
+      let sumDays+=MONTH_DAYS[$((curMonth - 2))]
       # If we are looking back to Feb., adjust for possible leap day
       if [ $curMonth -eq 3 ]; then
          let sumDays+=$(isLeapYear $2)
@@ -127,7 +148,7 @@ function getDaysBeforeMonthXInYearY()
 
 # Converts a human-style date, passed as the parameters "year month day", to the format that Chromium-based
 # browsers store on disk in their records.
-function human_time_to_chrome_time()
+function convertHumanTimeToChromiumTime()
 {
    SEARCH_YEAR=$1
    SEARCH_MONTH=$2
@@ -159,24 +180,61 @@ function human_time_to_chrome_time()
    let CHROME_TIME*=1000000
 
    # Adjust for time zone and return the Chrome time
-   let CHROME_TIME+=$(($TZ_OFFSET*$HOUR_SIZE))
+   let CHROME_TIME+=$((TZ_OFFSET * HOUR_SIZE))
    echo $CHROME_TIME
 }
 
 ## MAIN FUNCTION ##
-echo Showing activity for date $HUMAN_YEAR-$HUMAN_MONTH-$HUMAN_DAY...
+# Copy file at HIST_PATH to a temp dir, because the original db will be locked if the browser is currently
+# open
+TMP_HIST_DIR="$(dirname $(mktemp -d))"
+cp "$HIST_PATH" "$TMP_HIST_DIR"
+TRUE_HIST_PATH="$TMP_HIST_DIR/$(basename $HIST_PATH)"
 
 # Size of a day in Chrome time (24h * 60m * 60s * 1,000,000µs)
 DAY_SIZE=86400000000
 
 # Get start and end of desired day in Chrome time
-CHROME_DAY=$(human_time_to_chrome_time $HUMAN_YEAR $HUMAN_MONTH $HUMAN_DAY)
+CHROME_DAY=$(convertHumanTimeToChromiumTime $HUMAN_YEAR $HUMAN_MONTH $HUMAN_DAY)
 let CHROME_DAY_PLUS_ONE=$CHROME_DAY+$DAY_SIZE
 
-for RECORD in `sqlite3 "$HISTORY_PATH" 'SELECT url,visit_time FROM ( SELECT * FROM visits WHERE visit_time > '$CHROME_DAY' ) WHERE visit_time < '$CHROME_DAY_PLUS_ONE' ORDER BY visit_time DESC;'`; do
+# Pull 'url' and 'visit_time' fields from table 'visits' and use 'url' (an internal ID) to get actual URL
+# from table 'urls'
+NUM_VISITS=0
+echo -n "$NUM_VISITS visits found..."
+declare -a RESULTS=()
+for RECORD in `sqlite3 "$TRUE_HIST_PATH" 'SELECT url,visit_time FROM ( SELECT * FROM visits WHERE visit_time > '$CHROME_DAY' ) WHERE visit_time < '$CHROME_DAY_PLUS_ONE' ORDER BY visit_time ASC;'`; do
    URL_ID=`echo $RECORD | cut -d '|' -f 1`
    CHROME_DATE=`echo $RECORD | cut -d '|' -f 2`
-   HUMAN_DATE=$(chrome_time_to_human_time $CHROME_DATE)
-   THE_URL=$(sqlite3 "$HISTORY_PATH" 'SELECT url FROM urls WHERE id = '$URL_ID';')
-   echo $HUMAN_DATE: $THE_URL
+   HUMAN_DATE=$(convertChromiumTimeToHumanTime $CHROME_DATE)
+   THE_URL=$(sqlite3 "$TRUE_HIST_PATH" 'SELECT url FROM urls WHERE id = '$URL_ID';')
+   RESULTS+=($(echo "$HUMAN_DATE: Visited $THE_URL"))
+   let NUM_VISITS+=1
+   printf "\e[1A\n" # erase previous "found..." message so new one appears in its place
+   echo -n "$NUM_VISITS visits found..."
 done
+echo
+
+# Pull 'current_path' and 'start_time' fields from table 'downloads'
+NUM_DOWNLOADS=0
+echo -n "$NUM_DOWNLOADS downloads found..."
+for RECORD in `sqlite3 "$TRUE_HIST_PATH" 'SELECT current_path,start_time FROM ( SELECT * FROM downloads WHERE start_time > '$CHROME_DAY' ) WHERE start_time < '$CHROME_DAY_PLUS_ONE' ORDER BY start_time ASC;'`; do
+   FILE_PATH=`echo $RECORD | cut -d '|' -f 1`
+   FILE_NAME=$(basename "$FILE_PATH")
+   CHROME_DATE=`echo $RECORD | cut -d '|' -f 2`
+   HUMAN_DATE=$(convertChromiumTimeToHumanTime $CHROME_DATE)
+   RESULTS+=($(echo "$HUMAN_DATE: Downloaded $FILE_NAME"))
+   let NUM_DOWNLOADS+=1
+   printf "\e[1A\n" # erase previous "found..." message so new one appears in its place
+   echo -n "$NUM_DOWNLOADS downloads found..."
+done
+echo
+
+# Output sorted results (timestamp comes first, so downloads and visits will be chronologically interleaved)
+declare -a SORTED_RESULTS=($(sort <<< "${RESULTS[*]}"))
+for RESULT in "${SORTED_RESULTS[@]}"; do
+   echo $RESULT
+done
+
+# Clean up temp copy of db
+rm "$TRUE_HIST_PATH"
