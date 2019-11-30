@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Cloak Dev Paths
-# Prevents full paths from local hard drive becoming embedded in a binary by
-# copying the source tree to a RAM disk and building from there. There are too
-# many variable elements here to parameterize things, so you must revise it
-# manually to fit your own situation.
+# When building an Xcode project, prevents full paths from your local hard
+# drive becoming embedded in the binary. It does this by copying the source
+# tree to a RAM disk and building it from there. You must set SYMROOT to the
+# path to your source tree before running the script.
 # Recommended width:
-# |--------------------------------------------------------------------------|
+# |---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----|
 
 # --CONSTANTS--
 # MAXCODE_MB is an arbitrary limit as a basic safeguard to prevent runaway use
@@ -49,8 +49,7 @@ if [ $CODE_SECTORS -gt 0 ]; then
    let CODE_HUMANSIZE=$CODE_SECTORS*512;
 
    scale=0;
-   while [ $CODE_HUMANSIZE -gt 1024 ]
-   do
+   while [ $CODE_HUMANSIZE -gt 1024 ]; do
       let CODE_HUMANSIZE=$CODE_HUMANSIZE/1024
       let scale+=1
    done
