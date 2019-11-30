@@ -18,7 +18,7 @@ if [ ! -d "$SEARCH_PATH" ]; then
 fi
 
 for FILE in `find "$SEARCH_PATH"`; do
-   if ! [ -f "$FILE" ]; then
+   if [ ! -f "$FILE" ]; then
       continue
    fi
 
@@ -49,4 +49,5 @@ for FILE in `find "$SEARCH_PATH"`; do
    let LOOKED_AT+=1
 done
 
-echo "Looked at $LOOKED_AT files. The suffixes found were: ${SUFFIXES[@]}."
+declare -a SORTED_SUFFIXES=($(sort <<< "${SUFFIXES[*]}"))
+echo "Looked at $LOOKED_AT files. The suffixes found were: ${SORTED_SUFFIXES[@]}."
