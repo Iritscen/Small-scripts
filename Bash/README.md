@@ -177,8 +177,11 @@ The minimum desired height of results.
 Prints out names of files that meet a minimum specified width/height and optional portrait/landscape orientation. Requires ImageMagick.
 
 ### [Resize Images](resize_images.sh)
-<!--The directory in which to resize images. (Rest of parameters are hardcoded.)-->
-Resizes all images of size X to size Y. Requires ImageMagick.
+<!--'--source' followed by the directory with the images to be resized.
+(choose one) '--overwrite', '--beside', or '--dest PATH': Whether to overwrite the original images, place the resized copies beside them, or place the resized copies in PATH.
+'--new-percent:NUM', or '--new-width:NUM' and/or '--new-height:NUM': The new size for the images.
+'--old-[width|height]-[eg|lt|le|gt|ge]:NUM': Only resize images matching this criterion. An example would be '--old-width-gt:10000', which would resize images above 10K pixels in width. You can only use one '--old-width-*' argument at a time, but you can use one '--old-width-*" argument and one '--old-height-*' argument together.-->
+Resizes all images, or only the images of a certain size, if desired. Requires ImageMagick.
 
 ---
 
