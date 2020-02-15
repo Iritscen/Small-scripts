@@ -17,11 +17,7 @@ if [ ! -d "$SEARCH_PATH" ]; then
    exit
 fi
 
-for FILE in `find "$SEARCH_PATH"`; do
-   if [ ! -f "$FILE" ]; then
-      continue
-   fi
-
+for FILE in `find "$SEARCH_PATH" -type f`; do
    FILE_NAME=$(echo "$FILE" | sed 's/.*\///') # clip file name from whole path
 
    # If this is not a file with a name and suffix, skip it
