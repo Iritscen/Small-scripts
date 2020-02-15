@@ -62,6 +62,16 @@ Saves all email addresses found in a folder's text files or Apple Mail emails (.
 <!--The directory to recursively collect suffixes from.-->
 Prints out a list of all suffixes used by the files in a directory.
 
+### [Count Files by Name](count_files_by_name.sh)
+<!--The directory in which to recursively search.
+The suffixes to search for.-->
+Recursively searches for and counts the specified files in the given directory.
+
+### [Count Lines by Name](count_lines_by_name.sh)
+<!--The directory in which to recursively search.
+The suffixes to search for.-->
+Recursively searches for specified files in the given directory and totals their lines.
+
 ### [Duplicate and Name](duplicate_and_name.sh)
 <!--The path to the file to copy 'n' times.
 The directory of files with the names to use for the copies.
@@ -102,10 +112,6 @@ Lists all files in the current directory that are zero bytes in size.
 <!--'--file' followed by the path to the input file that the script should operate upon, OR
 '--dir' followed by the directory to get the size of.-->
 Takes an input file of a specified format (see script's comments) containing a list of directories to get the sizes of, grouped by category and volume, and displays the results.
-
-### [Get EOL Type](get_eol_type.sh)
-<!--The file to examine.-->
-Tells user which type(s) of line endings a given file uses. Requires 'dos2unix' to be installed.
 
 ### [Get Finder Sizes](get_finder_sizes.sh)
 <!--The directory to get the size of.-->
@@ -200,14 +206,6 @@ Prevents your local disk's paths from showing up in an Xcode-built binary.
 ### [Find Header Comments](find_header_comments.sh)
 <!--The directory in which to recursively search source files.-->
 Isolates and prints the comment block from the top of each source file in a project.
-
-### [Get Source Count](get_source_count.sh)
-<!--(none)-->
-Recursively searches for and counts the source files in the current directory.
-
-### [Get Source Length](get_source_length.sh)
-<!--(none)-->
-Recursively searches for source files in the current directory and counts their lines of code.
 
 ### [Print Certificate Info](print_cert_info.sh)
 <!--The directory in which to recursively search for applications.-->
