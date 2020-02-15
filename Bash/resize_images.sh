@@ -32,7 +32,7 @@ function mypr()
 }
 
 # Print help page for script
-printHelp()
+function printHelp()
 {
    mypr "You must supply the following arguments:"
    mypr "'--source PATH': The directory to look in recursively for image files."
