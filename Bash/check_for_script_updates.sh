@@ -21,6 +21,7 @@ declare -a OTHER_SCRIPTS_WC=("/path1/to/file1"
 declare -a OTHER_SCRIPTS_REPO=("/path2/to/file1"
 "/path2/to/file2")
 
+FOUND_CHANGE=0
 TIME_RESULT=""
 
 # Get the modification time of a file and save it in TIME_RESULT
@@ -59,10 +60,13 @@ for FILE1 in `find -s "$SMALL_SCRIPTS_WC" -type f -name "*.sh"`; do
 
    if [ $TIME_RESULT -eq -1 ]; then
       echo "$FILE_NAME has not been added to a repository."
+      FOUND_CHANGE=1
    elif [ $MOD_TIME1 -gt $MOD_TIME2 ]; then
       echo "$FILE_NAME has been changed."
+      FOUND_CHANGE=1
    elif [ $MOD_TIME1 -lt $MOD_TIME2 ]; then
       echo "$FILE_NAME is somehow newer in the repository."
+      FOUND_CHANGE=1
    else
       #echo "$FILE_NAME has not changed."
       echo -n
@@ -83,12 +87,19 @@ for ((i = 0; i < ${#OTHER_SCRIPTS_WC[@]}; ++i)); do
 
    if [ $TIME_RESULT -eq -1 ]; then
       echo "$FILE_NAME has not been added to a repository."
+      FOUND_CHANGE=1
    elif [ $MOD_TIME1 -gt $MOD_TIME2 ]; then
       echo "$FILE_NAME has been changed."
+      FOUND_CHANGE=1
    elif [ $MOD_TIME1 -lt $MOD_TIME2 ]; then
       echo "$FILE_NAME is somehow newer in the repository."
+      FOUND_CHANGE=1
    else
       #echo "$FILE_NAME has not changed."
       echo -n
    fi
 done
+
+if [ $FOUND_CHANGE -eq 0 ]; then
+   echo "No scripts have been updated!"
+fi
