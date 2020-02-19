@@ -54,7 +54,7 @@ function printHelp()
 }
 
 # Take apart an argument starting with "--old" or "--new" and save the user's request
-processOldNewArg()
+function processOldNewArg()
 {
    OLD_ARG=0
    if [[ $1 == --old* ]]; then
