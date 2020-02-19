@@ -199,6 +199,10 @@ Gives the cumulative total time of all AIFFs in a folder. Requires 'ffmpeg' to b
 ---
 
 ## Development
+### [Check for Script Updates](check_for_script_updates.sh)
+<!--(none)-->
+Looks for working copies of scripts that are newer than the copies under version control.
+
 ### [Cloak Dev Paths](cloak_dev_paths.sh)
 <!--(none)-->
 Prevents your local disk's paths from showing up in an Xcode-built binary.
