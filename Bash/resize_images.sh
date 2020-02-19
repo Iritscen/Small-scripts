@@ -9,6 +9,13 @@
 IFS="
 "
 
+# Check for ImageMagick
+which identify > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'identify' (part of the ImageMagick suite) does not appear to be installed, so the conversion cannot be performed." | fmt -w 80
+   exit
+fi
+
 # Variables
 declare -a IMG_SUFF=(gif jpeg jpg png tiff)
 FILE_MODE=0 # 1 = overwrite originals, 2 = new beside originals, 3 = new in supplied dir.

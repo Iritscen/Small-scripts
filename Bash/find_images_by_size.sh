@@ -10,6 +10,13 @@
 IFS="
 "
 
+# Check for ImageMagick
+which identify > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'identify' (part of the ImageMagick suite) does not appear to be installed, so the search cannot be performed." | fmt -w 80
+   exit
+fi
+
 if [ $# -lt 4 ]; then
    echo "You must pass in these four or five parameters:
 - Directory to search recursively

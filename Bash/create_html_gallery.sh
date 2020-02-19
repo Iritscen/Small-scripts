@@ -12,6 +12,13 @@
 IFS="
 "
 
+# Check for ImageMagick
+which identify > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'identify' (part of the ImageMagick suite) does not appear to be installed, so the operation cannot be performed." | fmt -w 80
+   exit
+fi
+
 IMAGE_SUFFIX="jpg"
 LARGE_IMAGE_SIZE=640
 TOPDIR=$1

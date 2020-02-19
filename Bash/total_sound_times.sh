@@ -7,8 +7,14 @@ IFS="
 "
 
 IN_DIR="$1"
-TOTAL_TIME=
-COUNT=
+TOTAL_TIME=0
+COUNT=0
+
+which ffprobe > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'ffprobe' (part of the ffmpeg suite) does not appear to be installed, so the operation cannot be performed." | fmt -w 80
+   exit
+fi
 
 echo "Totaling the time of this folder's AIFFs..."
 for AIF in `find $IN_DIR | grep .aif$ `; do

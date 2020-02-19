@@ -8,6 +8,13 @@
 # Recommended width:
 # |---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----|
 
+# --SAFETY--
+which xcodebuild > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'xcodebuild' (part of Apple's Developer Tools) does not appear to be installed, so the code cannot be built." | fmt -w 80
+   exit
+fi
+
 # --CONSTANTS--
 # MAXCODE_MB is an arbitrary limit as a basic safeguard to prevent runaway use
 # of RAM in the event of an error; note that this is the maximum size of the

@@ -8,6 +8,12 @@
 IFS="
 "
 
+which convert > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'convert' (part of the ImageMagick suite) does not appear to be installed, so the conversion cannot be performed." | fmt -w 80
+   exit
+fi
+
 if [ $# -ne 5 ]; then
    echo "You must pass in these five parameters for the crop operation:
 target directory

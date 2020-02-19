@@ -9,6 +9,12 @@ OUTDATED_PORTS=0
 UPGRADED_PORTS=0
 CLEARED_INACTIVE=0
 
+which port > /dev/null
+if [ "$?" -ne 0 ]; then
+   echo "Error: 'port' (MacPorts) does not appear to be installed, so there is nothing to update!" | fmt -w 80
+   exit
+fi
+
 function exitNicely()
 {
    declare -a TASKS_DONE=(MacPorts "was not" updated. Installed ports "were not" upgraded. "Inactive ports were cleared.")
