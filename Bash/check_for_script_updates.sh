@@ -102,4 +102,7 @@ done
 
 if [ $FOUND_CHANGE -eq 0 ]; then
    echo "No scripts have been updated!"
+else
+   open "$SMALL_SCRIPTS_WC"
+   open "$SMALL_SCRIPTS_REPO"
 fi
