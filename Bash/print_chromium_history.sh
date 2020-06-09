@@ -18,8 +18,8 @@ IFS="
 "
 
 # Known paths of browser history files (only Opera supported at the moment; add your own!)
-declare -a BROWSER_NAMES=(Opera SampleBrowser)
-declare -a BROWSER_HIST_PATHS=("$HOME/Library/Application Support/com.operasoftware.Opera/History" "/path/to/history file")
+declare -a BROWSER_NAMES=(Opera Brave SampleBrowser)
+declare -a BROWSER_HIST_PATHS=("$HOME/Library/Application Support/com.operasoftware.Opera/History" "$HOME/Library/Application Support/BraveSoftware/Brave-Browser/Default/History" "/path/to/history file")
 
 HIST_PATH="$1"
 HUMAN_YEAR=$(echo ${DATE_PARTS[0]} | sed 's/^0*//')
