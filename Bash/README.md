@@ -25,15 +25,15 @@ Backs up your shell settings in a single text file. [(sample output)](https://gi
 
 ### [History Check](history_check.sh)
 <!--Name of shell ("bash" or "zsh").-->
-Helps you to avoid exceeding your shell's command history limit and losing old history.
+Helps you to avoid exceeding your shell's command history limit and losing old history. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/history_check.jpg)
 
 ### [Last Boot Times](last_boot_times.sh)
 <!--(none)-->
-Lists when each mounted volume was last booted from (whether macOS or Windows).
+Lists when each mounted volume was last booted from (whether macOS or Windows). [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/last_boot_times.jpg)
 
 ### [List Startup Items](list_startup_items.sh)
 <!--(none)-->
-Lists all the files registered on a macOS system as launch daemons, launch agents, and general startup items.
+Lists all the files registered on a macOS system as launch daemons, launch agents, and general startup items. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/list_startup_items.jpg)
 
 ### [Man Dump](man_dump.sh)
 <!--Name of the Unix command.-->
@@ -41,7 +41,7 @@ Saves a readable plain-text copy of the man page for a given command.
 
 ### [Update MacPorts](update_macports.sh)
 <!--(none)-->
-A convenient interactive assistant for updating MacPorts and all installed ports.
+A convenient interactive assistant for updating MacPorts and all installed ports. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/update_macports.jpg)
 
 ---
 
@@ -60,7 +60,7 @@ Saves all email addresses found in a folder's text files or Apple Mail emails (.
 
 ### [Collect File Suffixes](collect_file_suffixes.sh)
 <!--The directory to recursively collect suffixes from.-->
-Prints out a list of all suffixes used by the files in a directory.
+Prints out a list of all suffixes used by the files in a directory. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/collect_file_suffixes.jpg)
 
 ### [Count Files by Name](count_files_by_name.sh)
 <!--The directory in which to recursively search.
@@ -111,26 +111,26 @@ Lists all files in the current directory that are zero bytes in size.
 ### [Get Data Totals](get_data_totals.sh)
 <!--'--file' followed by the path to the input file that the script should operate upon, OR
 '--dir' followed by the directory to get the size of.-->
-Takes an input file of a specified format (see script's comments) containing a list of directories to get the sizes of, grouped by category and volume, and displays the results.
+Takes an input file of a specified format (see script's comments) containing a list of directories to get the sizes of, grouped by category and volume, and displays the results. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/get_data_totals.png)
 
 ### [Get Finder Sizes](get_finder_sizes.sh)
 <!--The directory to get the size of.-->
-An 'osascript' wrapper that allows you to ask Finder from the command line what is the size of a folder. Both logical and physical sizes will be printed.
+An 'osascript' wrapper that allows you to ask Finder from the command line what is the size of a folder. Both logical and physical sizes will be printed. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/get_finder_sizes.png)
 
 ### [Get Fork Sizes](get_fork_sizes.sh)
 <!--Path to directory to get the fork sizes for.
 (optional) '--list-files' will cause each file's fork sizes to be printed to screen.-->
-Searching recursively in the supplied directory, checks each file for a resource fork, and totals the sizes of the data and resource forks separately. After printing the fork sizes to screen, the script also predicts what Finder will claim is the size of the folder, accounting for a bug as of macOS 10.14 pertaining to multi-fork files under APFS.
+Searching recursively in the supplied directory, checks each file for a resource fork, and totals the sizes of the data and resource forks separately. After printing the fork sizes to screen, the script also predicts what Finder will claim is the size of the folder, accounting for a bug as of macOS 10.14 pertaining to multi-fork files under APFS. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/get_fork_sizes.png)
 
 ### [Get Hardlink Sizes](get_hardlink_sizes.sh)
 <!--(After "--vol" or "--dir") The directory or volume to recursively search for multi-linked files.
 (optional) "--list-files" will list all found files instead of just giving the totals.
 (optional) "--bigger-than nUNITS" will only show files larger than 'n' "UNITS" of size.-->
-Finds all hardlinked (multi-linked) files on a volume or in a specified directory and prints out how much space the files take up and how much space is saved through the use of hardlinks.
+Finds all hardlinked (multi-linked) files on a volume or in a specified directory and prints out how much space the files take up and how much space is saved through the use of hardlinks. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/get_hardlink_sizes.jpg)
 
 ### [Get Info](get_info.sh)
 <!--The directory to get info on.-->
-Simulates the Get Info window on the command line by listing the size and item count of a directory.
+Simulates the Get Info window on the command line by listing the size and item count of a directory. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/get_info.png)
 
 ### [Rename Emails with Dates](rename_emails_with_dates.sh)
 <!--The directory of emails.
@@ -194,14 +194,14 @@ Resizes all images, or only the images of a certain size, if desired. Requires I
 ## Audio File Management
 ### [Total Sound Times](total_sound_times.sh)
 <!--The directory of sound files to examine.-->
-Gives the cumulative total time of all AIFFs in a folder. Requires 'ffmpeg' to be installed.
+Gives the cumulative total time of all AIFFs in a folder. Requires 'ffmpeg' to be installed. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/total_sound_times.jpg)
 
 ---
 
 ## Development
 ### [Check for Script Updates](check_for_script_updates.sh)
 <!--(none)-->
-Looks for working copies of scripts that are newer than the copies under version control.
+Looks for working copies of scripts that are newer than the copies under version control. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/check_for_script_updates.jpg)
 
 ### [Cloak Dev Paths](cloak_dev_paths.sh)
 <!--(none)-->
@@ -209,11 +209,11 @@ Prevents your local disk's paths from showing up in an Xcode-built binary.
 
 ### [Find Header Comments](find_header_comments.sh)
 <!--The directory in which to recursively search source files.-->
-Isolates and prints the comment block from the top of each source file in a project.
+Isolates and prints the comment block from the top of each source file in a project. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/find_header_comments.png)
 
 ### [Print Certificate Info](print_cert_info.sh)
 <!--The directory in which to recursively search for applications.-->
-Tells you the developer certificate signing authority for each app in a folder.
+Tells you the developer certificate signing authority for each app in a folder. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/print_cert_info.jpg)
 
 ---
 
@@ -221,13 +221,13 @@ Tells you the developer certificate signing authority for each app in a folder.
 ### [HTTP Tests](http_tests.sh)
 <!--The type of response to obtain (run without parameters to see choices).
 The URL to test.-->
-Prints the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL.
+Prints the response (status code, header, redirect URL, or Internet Archive status code) received upon querying a given URL. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/http_tests.jpg)
 
 ### [Print Chromium History](print_chromium_history.sh)
 <!--The name of the browser or the path to the browser's history file.
 The date of the desired history in the format 'yyyy-m-d'.
 (optional) The time zone offset.-->
-Tells you all the sites you visited in a Chromium-based browser on a given day.
+Tells you all the sites you visited in a Chromium-based browser on a given day. [(preview image)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/print_chromium_history.jpg)
 
 ### [Scrape Smugmug Images](scrape_smugmug_images.sh)
 <!--The URL of a Smugmug gallery.
