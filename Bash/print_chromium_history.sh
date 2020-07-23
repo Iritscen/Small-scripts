@@ -17,9 +17,9 @@ declare -a DATE_PARTS=($2)
 IFS="
 "
 
-# Known paths of browser history files (only Opera supported at the moment; add your own!)
-declare -a BROWSER_NAMES=(Opera Brave SampleBrowser)
-declare -a BROWSER_HIST_PATHS=("$HOME/Library/Application Support/com.operasoftware.Opera/History" "$HOME/Library/Application Support/BraveSoftware/Brave-Browser/Default/History" "/path/to/history file")
+# Known paths of browser history files
+declare -a BROWSER_NAMES=(Opera Brave Chrome SampleBrowser)
+declare -a BROWSER_HIST_PATHS=("$HOME/Library/Application Support/com.operasoftware.Opera/History" "$HOME/Library/Application Support/BraveSoftware/Brave-Browser/Default/History" "$HOME/Library/Application Support/Google/Chrome/Default/History" "/path/to/history file")
 
 HIST_PATH="$1"
 HUMAN_YEAR=$(echo ${DATE_PARTS[0]} | sed 's/^0*//')
@@ -30,7 +30,7 @@ TZ_OFFSET="$3"
 ##ARGUMENT PROCESSING##
 if [ $# -ne 2 ] && [ $# -ne 3 ]; then
    echo "You need to supply the following arguments:"
-   echo "1. 'Opera', which will automatically look up the browser's history file, OR"
+   echo "1. 'Opera'/'Brave'/'Chrome', which will automatically look up that browser's history file, OR"
    echo "   'PATH', the path to a history file for such a browser."
    echo "2. A date in the format 'yyyy-m-d'."
    echo "3. (optional) An offset adjustment in hours for your time zone. Chromium's timestamps are in UTC, so to get the actual history for your chosen day's 24-hour period, you may need to plug in the reverse of your TZ offset. For example, if you are in the ET time zone (UTC-05:00), supply "5" as the offset." | fmt -w 80
