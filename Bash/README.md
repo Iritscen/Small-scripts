@@ -21,7 +21,7 @@ Feel free to file an issue if a script is not working for you. Although I origin
 ## Unix/System Management
 ### [Back Up Unix Settings](back_up_unix_settings.sh)
 <!--Destination path and name of backup file.-->
-Backs up your shell settings in a single text file. ![(sample output)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/back_up_unix_settings.jpg)
+Backs up your shell settings in a single text file. [(sample output)](https://github.com/Iritscen/small-scripts/blob/master/Bash/previews/back_up_unix_settings.jpg)
 
 ### [History Check](history_check.sh)
 <!--Name of shell ("bash" or "zsh").-->
@@ -164,7 +164,7 @@ Converts all images of a given suffix to another format. Requires ImageMagick.
 
 ### [Create HTML Gallery](create_html_gallery.sh)
 <!--The top directory of the folders full of images.-->
-Creates an HTML directory listing of all subfolders, and an HTML gallery of all images in each subfolder. Requires ImageMagick. ![(sample gallery)](http://iritscen.oni2.net/oni2as/index.html)
+Creates an HTML directory listing of all subfolders, and an HTML gallery of all images in each subfolder. Requires ImageMagick. [(sample gallery)](http://iritscen.oni2.net/oni2as/index.html)
 
 ### [Crop Images](crop_images.sh)
 <!--The directory of images to create cropped copies of.
