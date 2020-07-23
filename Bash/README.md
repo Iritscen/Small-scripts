@@ -24,8 +24,8 @@ Feel free to file an issue if a script is not working for you. Although I origin
 Backs up your shell settings in a single text file.
 
 ### [History Check](history_check.sh)
-<!--(none)-->
-Helps you to avoid exceeding your Bash command history limit and losing old history.
+<!--Name of shell ("bash" or "zsh").-->
+Helps you to avoid exceeding your shell's command history limit and losing old history.
 
 ### [Last Boot Times](last_boot_times.sh)
 <!--(none)-->
@@ -186,7 +186,7 @@ Prints out names of files that meet a minimum specified width/height and optiona
 <!--'--source' followed by the directory with the images to be resized.
 (choose one) '--overwrite', '--beside', or '--dest PATH': Whether to overwrite the original images, place the resized copies beside them, or place the resized copies in PATH.
 '--new-percent:NUM', or '--new-width:NUM' and/or '--new-height:NUM': The new size for the images.
-'--old-[width|height]-[eg|lt|le|gt|ge]:NUM': Only resize images matching this criterion. An example would be '--old-width-gt:10000', which would resize images above 10K pixels in width. You can only use one '--old-width-*' argument at a time, but you can use one '--old-width-*" argument and one '--old-height-*' argument together.-->
+'--old-[width|height]-[eq|lt|le|gt|ge]:NUM': Only resize images matching this criterion. An example would be '--old-width-gt:10000', which would resize images above 10K pixels in width. You can only use one '--old-width-*' argument at a time, but you can use one '--old-width-*" argument and one '--old-height-*' argument together.-->
 Resizes all images, or only the images of a certain size, if desired. Requires ImageMagick.
 
 ---
